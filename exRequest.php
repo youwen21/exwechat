@@ -20,9 +20,9 @@ class exRequest
     public $originalMsg; // 原生XML消息
     public $msg; // 数组消息
 
-    protected $encodingAesKey='da8yIZvckoaMVVpbOPo7YN0KdOa71DataVoan4Tmq2i';
-    protected $appId='wx6720969992083b6d';
-    protected $token='bjnqCQ1440899050';
+    private $encodingAesKey='';
+    private $appId='';
+    private $token='';
 
     public $errorCode = 0;
     public $errorMsg = '';
@@ -33,19 +33,30 @@ class exRequest
      * @param  int $encryptType [1文明 ，2 兼容 ， 3加密]
      * @author baiyouwen
      */
-    protected function __construct($encryptType=1, $msgCheck=false)
+    protected function __construct($encryptType, $msgCheck, $param)
     {
+        // 初始化配置
+        if(!empty($param)){
+            foreach ($param as $key => $value) {
+                if(in_array($key, ['encodingAesKey', 'appId', 'token'])){
+                    $this->{$key} = $value;
+                }
+            }
+        }
+        // 获取微信服务器推送来的消息
         $this->originalMsg = file_get_contents("php://input");
         if(empty($this->originalMsg)){
             $this->errorCode='001';
             $this->errorMsg='非正常请求';
             return;
         }
+        // XML消息解析成数组
         $data = XMLParse::xmlToArray($this->originalMsg);
         //提取密文
         // $xmlparse = new XMLParse;
         // $array = $xmlparse->extract($this->originalMsg);
-        // 消息加解密方式
+
+        // 消息传输类型判断（明文｜兼容｜加密）
         switch ($encryptType) {
             case '1': // 明文
                 $this->msg = $data;
@@ -80,10 +91,10 @@ class exRequest
         }
     }
 
-    public static function instance($encryptType = 1, $msgCheck=false)
+    public static function instance($encryptType = 1, $msgCheck=false, $param=[])
     {
         if (is_null(self::$instance)) {
-            self::$instance = new static($encryptType, $msgCheck);
+            self::$instance = new static($encryptType, $msgCheck, $param);
         }
         return self::$instance;
     }

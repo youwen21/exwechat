@@ -1,0 +1,12 @@
+{
+    "name": "youwen/exwechat",
+    "type": "library",
+    "authors": [
+        {
+            "name": "baiyouwen",
+            "email": "youwen21@yeah.net"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}

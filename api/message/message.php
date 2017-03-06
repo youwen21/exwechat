@@ -6,6 +6,9 @@ use youwen\exwechat\api\http;
 /**
  * 获取微信用户
  * @author baiyouwen <youwen21@yeah.net>
+ * 此类中方法$data参数可以是数组也可是json 为接口要传的消息体
+ * $data中的具体参数查看mp-wiki文档
+ * 或者bauth demo http://git.oschina.net/youwen21/Bauth/tree/master/application/exwechat/controller?dir=1&filepath=application%2Fexwechat%2Fcontroller&oid=ad2486983e23879fc246ea46d4bdf45a4c97ab38&sha=d9a4d362918c7243749896f7c3fbdbfa31396c29
  */
 class message extends AbstractApi
 {
@@ -34,6 +37,12 @@ class message extends AbstractApi
         $this->token = $token;
     }
 
+    /** 
+     * 上传图文消息内的图片获取URL
+     * @param  string $img [description]
+     * @return [type]      [description]
+     * @author baiyouwen
+     */
     public function uploadimg($img='')
     {
     	$url = sprintf($this->urlUploadimg, $this->token);
@@ -47,6 +56,12 @@ class message extends AbstractApi
     	return $this->commenPart($ret);
     }
 
+    /**
+     * 上传图文消息素材
+     * @param  [type] $data [要POST的数据 详情看MP－wiki接口 或bauth-Demomassage]
+     * @return [type]       [description]
+     * @author baiyouwen
+     */
     public function uploadnews($data)
     {
         $url = sprintf($this->urlUploadnews, $this->token);
@@ -55,6 +70,11 @@ class message extends AbstractApi
         return $this->commenPart($ret);
     }
 
+    /** 
+     * 根据分组进行群发
+     * @param  array $data 要发送的消息
+     * @author baiyouwen
+     */
     public function sendall($data)
     {
         $url = sprintf($this->urlUploadnews, $this->token);
@@ -63,6 +83,7 @@ class message extends AbstractApi
         return $this->commenPart($ret);
     }
 
+    // 根据OpenID列表群发
     public function send($data)
     {
         $url = sprintf($this->urlSend, $this->token);

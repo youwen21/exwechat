@@ -18,6 +18,7 @@ class exRequest
     protected static $instance;
 
     public $originalMsg; // 原生XML消息
+    public $data; //原生转成的数组消息，此时唯一能确定提取的是ToUserName字段
     public $msg; // 数组消息
 
     private $encodingAesKey='';
@@ -33,7 +34,28 @@ class exRequest
      * @param  int $encryptType [1文明 ，2 兼容 ， 3加密]
      * @author baiyouwen
      */
-    protected function __construct($encryptType, $msgCheck, $param)
+    protected function __construct()
+    {
+        // 获取微信服务器推送来的消息
+        $this->originalMsg = file_get_contents("php://input");
+        if(empty($this->originalMsg)){
+            $this->errorCode='001';
+            $this->errorMsg='非正常请求';
+            return;
+        }
+        // XML消息解析成数组
+        $this->data = XMLParse::xmlToArray($this->originalMsg);
+    }
+
+    public static function instance()
+    {
+        if (is_null(self::$instance)) {
+            self::$instance = new static();
+        }
+        return self::$instance;
+    }
+
+    public function extractMsg($encryptType=1, $param=[], $msgCheck=true)
     {
         // 初始化配置
         if(!empty($param)){
@@ -43,23 +65,13 @@ class exRequest
                 }
             }
         }
-        // 获取微信服务器推送来的消息
-        $this->originalMsg = file_get_contents("php://input");
-        if(empty($this->originalMsg)){
-            $this->errorCode='001';
-            $this->errorMsg='非正常请求';
-            return;
-        }
-        // XML消息解析成数组
-        $data = XMLParse::xmlToArray($this->originalMsg);
         //提取密文
         // $xmlparse = new XMLParse;
         // $array = $xmlparse->extract($this->originalMsg);
-
         // 消息传输类型判断（明文｜兼容｜加密）
         switch ($encryptType) {
             case '1': // 明文
-                $this->msg = $data;
+                $this->msg = $this->data;
                 break;
             case '2': // 兼容
                 // if($msgCheck){
@@ -70,17 +82,17 @@ class exRequest
                 //     }
                 // }
                 if(isset($data['Encrypt'])) unset($data['Encrypt']);
-                $this->msg = $data;
+                $this->msg = $this->data;
                 break;
             case '3': // 密文
                 if($msgCheck){
-                    if(!$this->_check($data['Encrypt'])){
+                    if(!$this->_check($this->data['Encrypt'])){
                         $this->errorCode=303;
                         $this->errorMsg='消息签名验证失败';
                         break;
                     }
                 }
-                $result = $this->_decryptMsg($data['Encrypt']);
+                $result = $this->_decryptMsg($this->data['Encrypt']);
                 if(!$result[0]){
                     $this->msg = XMLParse::xmlToArray($result[1]);
                 }
@@ -89,14 +101,6 @@ class exRequest
                 # code...
                 break;
         }
-    }
-
-    public static function instance($encryptType = 1, $msgCheck=false, $param=[])
-    {
-        if (is_null(self::$instance)) {
-            self::$instance = new static($encryptType, $msgCheck, $param);
-        }
-        return self::$instance;
     }
 
     /**
@@ -144,6 +148,11 @@ class exRequest
     public function getFromUserName()
     {
         return $this->msg['FromUserName'];
+    }
+
+    public function getToUserName()
+    {
+        return $this->data['ToUserName'];
     }
 }
 

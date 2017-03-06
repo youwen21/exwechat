@@ -28,24 +28,48 @@ class template extends AbstractApi
         $this->token = $token;
     }
 
-    public function uploadimg($img='')
+    // 发送模板消息
+    public function send($data)
     {
-    	$url = sprintf($this->urlUploadimg, $this->token);
-        // $file = $_SERVER['DOCUMENT_ROOT'] . ltrim($matinfo['localpath'], '.');
-        // $file = realpath('./Uploads/wechatpic/sys/53abe32d5b8d8.jpeg');
-        $file = str_replace("\\", "/", realpath($img));
-        $data = array();
-        // $data['media'] = '@'.$file;  //php5.5前
-        $data['media'] = new \CURLFile($file); // php5.5后
-    	$ret = http::curl_post($url, $data);
-    	return $this->commenPart($ret);
+        $url = sprintf($this->url_send, $this->token);
+        $json = is_array($data) ? json_encode($data) : $data;
+        $ret = http::curl_post($url, $json);
+        return $this->commenPart($ret);
     }
 
-    public function uploadnews($data)
+    // 设置所属行业
+    public function set_industry($data)
     {
-        $url = sprintf($this->urlUploadnews, $this->token);
-        $json = is_array($data) ? json_encode($data, JSON_UNESCAPED_UNICODE) : $data;
+        $url = sprintf($this->url_add_template, $this->token);
+        $json = is_array($data) ? json_encode($data) : $data;
+        // echo '<pre>';
+        // print_r( $json );
+        // exit('</pre>');
         $ret = http::curl_post($url, $json);
+        return $this->commenPart($ret);
+    }
+
+    // 获取设置的行业
+    public function get_template_id()
+    {
+        $url = sprintf($this->url_add_template, $this->token);
+        $ret = http::curl_get($url);
+        return $this->commenPart($ret);
+    }
+
+    // 获取设置的行业
+    public function get_industry()
+    {
+        $url = sprintf($this->url_get_industry, $this->token);
+        $ret = http::curl_get($url);
+        return $this->commenPart($ret);
+    }
+
+    // 获取模板列表
+    public function get_all_template()
+    {
+        $url = sprintf($this->url_all_template, $this->token);
+        $ret = http::curl_get($url);
         return $this->commenPart($ret);
     }
 }

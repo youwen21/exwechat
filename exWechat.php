@@ -52,15 +52,15 @@ class exWechat
     private function _in_ips($ip)
     {
         $num = strrpos($ip, '.');
-        $prefix = substr($ip, 0, strrpos($ip, '.'));
-        $postfix = substr($ip, strrpos($ip, '.')+1);
+        $prefix = substr($ip, 0, $num);
+        $postfix = substr($ip, $num+1);
         foreach ($this->ips_list as $value) {
             if($prefix == substr($value, 0, $num)){
                 $arr = explode('/', substr($value, $num+1));
                 sort($arr, SORT_NUMERIC);
                 if( $arr[1] > $postfix && $postfix > $arr[0] || $arr[1]==$postfix || $arr[0] == $postfix){
                     return true;
-                }else{
+                }else{ //看目前的IP列表是不需要再循环了
                     return false;
                 }
             }

@@ -42,13 +42,6 @@ class media extends AbstractApi
     /**
      * temp = temporary 临时
      * 新增临时图文素材
-     * @param  string $value [description]
-     * @return [type]        [description]
-     * @author baiyouwen
-     */
-    /**
-     * temp = temporary 临时
-     * 新增临时图文素材
      * @param  string $data [description]
      * @param  string $type [分别有图片（image）、语音（voice）、视频（video）和缩略图（thumb）]
      * @return [type]       [description]
@@ -96,10 +89,7 @@ class media extends AbstractApi
     {
         
     }
-    /**
-     * 新增永久素材
-     * @author baiyouwen
-     */
+
     /**
      * 新增永久素材
      * @param  string $media_path [文件路径]
@@ -151,10 +141,7 @@ class media extends AbstractApi
         $ret = http::curl_get($url);
         return $this->commenPart($ret);
     }
-    /**
-     * 获取永久素材列表
-     * @author baiyouwen
-     */
+
     /**
      * 获取永久素材列表
      * @param  string  $type   [图片（image）、视频（video）、语音 （voice）、图文（news）]

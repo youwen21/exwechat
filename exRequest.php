@@ -34,10 +34,10 @@ class exRequest
      * @param  int $encryptType [1文明 ，2 兼容 ， 3加密]
      * @author baiyouwen
      */
-    protected function __construct()
+    protected function __construct($original)
     {
         // 获取微信服务器推送来的消息
-        $this->originalMsg = file_get_contents("php://input");
+        $this->originalMsg = empty($original)?file_get_contents("php://input"):$original;
         if(empty($this->originalMsg)){
             $this->errorCode='001';
             $this->errorMsg='非正常请求';
@@ -47,14 +47,26 @@ class exRequest
         $this->data = XMLParse::xmlToArray($this->originalMsg);
     }
 
-    public static function instance()
+    /**
+     * 单例构造唯一入口
+     * @author baiyouwen
+     */
+    public static function instance($original='')
     {
         if (is_null(self::$instance)) {
-            self::$instance = new static();
+            self::$instance = new static($original);
         }
         return self::$instance;
     }
 
+    /**
+     * 提取消息
+     * @param  integer $encryptType [消息传输方式（明文|兼容|加密）]
+     * @param  array   $param       [description]
+     * @param  boolean $msgCheck    [description]
+     * @return [type]               [description]
+     * @author baiyouwen
+     */
     public function extractMsg($encryptType=1, $param=[], $msgCheck=true)
     {
         // 初始化配置
@@ -101,6 +113,7 @@ class exRequest
                 # code...
                 break;
         }
+        return $this->msg;
     }
 
     /**

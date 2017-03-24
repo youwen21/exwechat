@@ -17,19 +17,29 @@ class exLog
 
     private static $path='';
 
-    public static function log($param, $tag = '')
+    public static function log($param, $tag = '', $conf=[])
     {
-        self::_init();
+        self::_init($conf);
         $str = self::_makeString($param);
         file_put_contents(self::$path . self::$filename . '.txt', date('H:i:s') . "\t" . self::$uniqid . "\t" . self::$step . "\t" . $tag . "\t" . $str . PHP_EOL, FILE_APPEND);
         self::$step++;
     }
 
-    private static function _init()
+    public static function setConf($conf=[])
+    {
+        if(!empty($conf)){
+            self::$conf = $conf;
+        }
+    }
+
+    private static function _init($conf)
     {
         static $noCheck = 0;
         if ($noCheck) {
             return true;
+        }
+        if(!empty($conf)){
+            self::$conf = $conf;
         }
         self::$path = str_replace('\\', '/', ROOT_PATH . self::$conf['path']);
         if (!is_dir(self::$path )) {

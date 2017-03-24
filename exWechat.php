@@ -4,7 +4,7 @@ namespace youwen\exwechat;
 class exWechat
 {
     
-    private $_token = 'bjnqCQ1440899050';
+    private $_token = '';
     public function __construct($token='')
     {
         if (!empty($token)) {
@@ -40,6 +40,9 @@ class exWechat
      */
     public function checkIP($ip)
     {
+        if(in_array($ip, ['127.0.0.1'])){
+            return true;
+        }
         if(in_array($ip, $this->ip_list)){
             return true;
         }

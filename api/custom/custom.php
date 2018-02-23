@@ -1,13 +1,17 @@
 <?php
+
 namespace youwen\exwechat\api\custom;
 
-use youwen\exwechat\api\AbstractApi;
+use youwen\exwechat\api\BaseApi;
 use youwen\exwechat\api\http;
+use youwen\exwechat\api\utils\common;
+
+
 /**
  * 获取微信用户
  * @author baiyouwen <youwen21@yeah.net>
  */
-class custom extends AbstractApi
+class custom extends BaseApi
 {
     private $urladd = 'https://api.weixin.qq.com/customservice/kfaccount/add?access_token=%s';
     private $urlupdate = 'https://api.weixin.qq.com/customservice/kfaccount/update?access_token=%s';
@@ -29,7 +33,7 @@ class custom extends AbstractApi
     	    $this->url.='&next_openid='.$next_openid;
     	}
     	$ret = http::curl_get($url);
-    	return $this->commenPart($ret);
+    	return $this->HandleRet($ret);
     }
 
     public function customList()
@@ -39,7 +43,7 @@ class custom extends AbstractApi
         //     $this->url.='&next_openid='.$next_openid;
         // }
         $ret = http::curl_get($url);
-        return $this->commenPart($ret);
+        return $this->HandleRet($ret);
     }
 
 

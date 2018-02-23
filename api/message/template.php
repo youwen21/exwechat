@@ -1,13 +1,15 @@
 <?php
 namespace youwen\exwechat\api\message;
 
-use youwen\exwechat\api\AbstractApi;
+use youwen\exwechat\api\BaseApi;
 use youwen\exwechat\api\http;
+use youwen\exwechat\api\utils\common;
+
 /**
  * 模板消息
  * @author baiyouwen <youwen21@yeah.net>
  */
-class template extends AbstractApi
+class template extends BaseApi
 {
     // 设置所属行业 POST
     private $url_set_industry = 'https://api.weixin.qq.com/cgi-bin/template/api_set_industry?access_token=%s';
@@ -34,7 +36,7 @@ class template extends AbstractApi
         $url = sprintf($this->url_send, $this->token);
         $json = is_array($data) ? json_encode($data) : $data;
         $ret = http::curl_post($url, $json);
-        return $this->commenPart($ret);
+        return $this->HandleRet($ret);
     }
 
     // 设置所属行业
@@ -46,7 +48,7 @@ class template extends AbstractApi
         // print_r( $json );
         // exit('</pre>');
         $ret = http::curl_post($url, $json);
-        return $this->commenPart($ret);
+        return $this->HandleRet($ret);
     }
 
     // 获取设置的行业
@@ -54,7 +56,7 @@ class template extends AbstractApi
     {
         $url = sprintf($this->url_add_template, $this->token);
         $ret = http::curl_get($url);
-        return $this->commenPart($ret);
+        return $this->HandleRet($ret);
     }
 
     // 获取设置的行业
@@ -62,7 +64,7 @@ class template extends AbstractApi
     {
         $url = sprintf($this->url_get_industry, $this->token);
         $ret = http::curl_get($url);
-        return $this->commenPart($ret);
+        return $this->HandleRet($ret);
     }
 
     // 获取模板列表
@@ -70,6 +72,6 @@ class template extends AbstractApi
     {
         $url = sprintf($this->url_all_template, $this->token);
         $ret = http::curl_get($url);
-        return $this->commenPart($ret);
+        return $this->HandleRet($ret);
     }
 }

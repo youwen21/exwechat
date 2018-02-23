@@ -1,14 +1,15 @@
 <?php
 namespace youwen\exwechat\api\JSSDK;
 
-use youwen\exwechat\api\AbstractApi;
+use youwen\exwechat\api\BaseApi;
 use youwen\exwechat\api\http;
+use youwen\exwechat\api\utils\common;
 
 /**
  * 获取微信用户
  * @author baiyouwen <youwen21@yeah.net>
  */
-class JSSDK extends AbstractApi
+class JSSDK extends BaseApi
 {
     private $url = 'https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=%s&type=jsapi';
 
@@ -29,7 +30,7 @@ class JSSDK extends AbstractApi
     {
         $url = sprintf($this->url, $this->token);
         $ret = http::curl_get($url);
-        return $this->commenPart($ret);
+        return $this->HandleRet($ret);
     }
 
     /**

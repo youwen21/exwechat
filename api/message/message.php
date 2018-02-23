@@ -1,8 +1,10 @@
 <?php
 namespace youwen\exwechat\api\message;
 
-use youwen\exwechat\api\AbstractApi;
+use youwen\exwechat\api\BaseApi;
 use youwen\exwechat\api\http;
+use youwen\exwechat\api\utils\common;
+
 /**
  * 获取微信用户
  * @author baiyouwen <youwen21@yeah.net>
@@ -10,7 +12,7 @@ use youwen\exwechat\api\http;
  * $data中的具体参数查看mp-wiki文档
  * 或者bauth demo http://git.oschina.net/youwen21/Bauth/tree/master/application/exwechat/controller?dir=1&filepath=application%2Fexwechat%2Fcontroller&oid=ad2486983e23879fc246ea46d4bdf45a4c97ab38&sha=d9a4d362918c7243749896f7c3fbdbfa31396c29
  */
-class message extends AbstractApi
+class message extends BaseApi
 {
     // 上传图文消息内的图片获取URL【订阅号与服务号认证后均可用】 POST
     private $urlUploadimg = 'https://api.weixin.qq.com/cgi-bin/media/uploadimg?access_token=%s';
@@ -53,7 +55,7 @@ class message extends AbstractApi
         // $data['media'] = '@'.$file;  //php5.5前
         $data['media'] = new \CURLFile($file); // php5.5后
     	$ret = http::curl_post($url, $data);
-    	return $this->commenPart($ret);
+    	return $this->HandleRet($ret);
     }
 
     /**
@@ -67,7 +69,7 @@ class message extends AbstractApi
         $url = sprintf($this->urlUploadnews, $this->token);
         $json = is_array($data) ? json_encode($data, JSON_UNESCAPED_UNICODE) : $data;
         $ret = http::curl_post($url, $json);
-        return $this->commenPart($ret);
+        return $this->HandleRet($ret);
     }
 
     /** 
@@ -80,7 +82,7 @@ class message extends AbstractApi
         $url = sprintf($this->urlUploadnews, $this->token);
         $json = is_array($data) ? json_encode($data, JSON_UNESCAPED_UNICODE) : $data;
         $ret = http::curl_post($url, $json);
-        return $this->commenPart($ret);
+        return $this->HandleRet($ret);
     }
 
     // 根据OpenID列表群发
@@ -89,7 +91,7 @@ class message extends AbstractApi
         $url = sprintf($this->urlSend, $this->token);
         $json = is_array($data) ? json_encode($data, JSON_UNESCAPED_UNICODE) : $data;
         $ret = http::curl_post($url, $json);
-        return $this->commenPart($ret);
+        return $this->HandleRet($ret);
     }
 
 

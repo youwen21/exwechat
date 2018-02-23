@@ -1,7 +1,7 @@
 <?php
 namespace youwen\exwechat\api\media;
 
-use youwen\exwechat\api\AbstractApi;
+use youwen\exwechat\api\BaseApi;
 use youwen\exwechat\api\http;
 
 /**
@@ -9,7 +9,7 @@ use youwen\exwechat\api\http;
  * @author baiyouwen <youwen21@yeah.net>
  * @license [https://mp.weixin.qq.com/wiki]
  */
-class media extends AbstractApi
+class media extends BaseApi
 {
     // 新增临时图文素材 上传多媒体文件 POST/FORM
     private $urlMediaUpload = 'https://api.weixin.qq.com/cgi-bin/media/upload?access_token=%s&type=%s';
@@ -56,7 +56,7 @@ class media extends AbstractApi
         // $data['type'] = $type;
         $data['media'] = new \CURLFile($file); // php5.5后。  php5.5前用 '@'.$file;
         $ret = http::curl_post($url, $data);
-        return $this->commenPart($ret);
+        return $this->HandleRet($ret);
     }
 
     /** 
@@ -105,7 +105,7 @@ class media extends AbstractApi
         $data['type'] = $type;
         $data['media'] = new \CURLFile($file); // php5.5后。  php5.5前用 '@'.$file;
         $ret = http::curl_post($url, $data);
-        return $this->commenPart($ret);
+        return common::handderRet($ret);
     }
     /**
      * 获取永久素材  － 下载素材
@@ -128,7 +128,7 @@ class media extends AbstractApi
         $url = sprintf($this->urlDelMaterial, $this->token);
         $json = json_encode(['media_id'=>$media_id]);
         $ret = http::curl_post($url, $json);
-        return $this->commenPart($ret);
+        return common::handderRet($ret);
     }
 
     /**
@@ -139,7 +139,7 @@ class media extends AbstractApi
     {
         $url = sprintf($this->urlmaterialcount, $this->token);
         $ret = http::curl_get($url);
-        return $this->commenPart($ret);
+        return common::handderRet($ret);
     }
 
     /**
@@ -158,6 +158,6 @@ class media extends AbstractApi
         $data['count'] = $count;
         $json = json_encode($data);
         $ret = http::curl_post($url, $json);
-        return $this->commenPart($ret);
+        return common::handderRet($ret);
     }
 }

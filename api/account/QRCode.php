@@ -1,7 +1,7 @@
 <?php
 namespace youwen\exwechat\api\account;
 
-use youwen\exwechat\api\AbstractApi;
+use youwen\exwechat\api\BaseApi;
 use youwen\exwechat\api\http;
 /**
  * 获取微信用户
@@ -14,7 +14,7 @@ use youwen\exwechat\api\http;
  * scene_id 场景值ID，临时二维码时为32位非0整型，永久二维码时最大值为100000（目前参数只支持1--100000）
  * scene_str 场景值ID（字符串形式的ID），字符串类型，长度限制为1到64，仅永久二维码支持此字段   
  */
-class QRCode extends AbstractApi
+class QRCode extends BaseApi
 {
     private $url = 'https://api.weixin.qq.com/cgi-bin/qrcode/create?access_token=%s';
     private $urlQRshow = 'https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=%s';

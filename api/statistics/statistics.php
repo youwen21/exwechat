@@ -1,14 +1,16 @@
 <?php
 namespace youwen\exwechat\api\user;
 
-use youwen\exwechat\api\AbstractApi;
+use youwen\exwechat\api\BaseApi;
 use youwen\exwechat\api\http;
+use youwen\exwechat\api\utils\common;
+
 /**
  * 用户统计
  * @author baiyouwen <youwen21@yeah.net>
  * @license [https://mp.weixin.qq.com/wiki] [数据统计]
  */
-class statistics extends AbstractApi
+class statistics extends BaseApi
 {
     private $url = 'https://api.weixin.qq.com/datacube/%s?access_token=$s';
 
@@ -88,6 +90,6 @@ class statistics extends AbstractApi
         $url = sprintf($this->url, $api, $this->token);
         $json = json_encode(['begin_date'=>$begin_date, 'end_date'=>$end_date]);
         $ret = http::curl_post($url, $json);
-        return $this->commenPart($ret);
+        return $this->HandleRet($ret);
     }
 }

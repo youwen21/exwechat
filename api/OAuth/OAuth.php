@@ -1,8 +1,9 @@
 <?php
 namespace youwen\exwechat\api\Oauth;
 
-use youwen\exwechat\api\AbstractApi;
+use youwen\exwechat\api\BaseApi;
 use youwen\exwechat\api\http;
+use youwen\exwechat\api\utils\common;
 
 /**
  * OAuth2.0鉴权
@@ -12,7 +13,7 @@ use youwen\exwechat\api\http;
  * 为方便理解，我把 基础支持的access_token叫access_token
  * OAuth中的access_token叫做oauth_token
  */
-class OAuth extends AbstractApi
+class OAuth extends BaseApi
 {
     // 第一步：用户同意授权，获取code scope(snsapi_base|snsapi_userinfo)
     private $step1 = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=%s&redirect_uri=%s&response_type=code&scope=%s&state=%s#wechat_redirect';
@@ -45,27 +46,27 @@ class OAuth extends AbstractApi
     {
         $url = sprintf($this->step2, $this->appid, $this->secret, $code);
         $ret = http::curl_get($url);
-        return $this->commenPart($ret);
+        return $this->HandleRet($ret);
     }
 
     public function getUserInfo($oauth_token, $openid)
     {
         $url = sprintf($this->step3, $oauth_token, $openid);
         $ret = http::curl_get($url);
-        return $this->commenPart($ret);
+        return $this->HandleRet($ret);
     }
 
     public function refreshToken($refresh_token)
     {
         $url = sprintf($this->refresh_token, $this->appid, $refresh_token);
         $ret = http::curl_get($url);
-        return $this->commenPart($ret);
+        return $this->HandleRet($ret);
     }
 
     public function checkToken($oauth_token, $openid)
     {
         $url = sprintf($this->check_token, $oauth_token, $openid);
         $ret = http::curl_get($url);
-        return $this->commenPart($ret);
+        return $this->HandleRet($ret);
     }
 }

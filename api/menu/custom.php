@@ -1,13 +1,13 @@
 <?php
 namespace youwen\exwechat\api\custom;
 
-use youwen\exwechat\api\AbstractApi;
+use youwen\exwechat\api\BaseApi;
 use youwen\exwechat\api\http;
 /**
  * 获取微信用户
  * @author baiyouwen <youwen21@yeah.net>
  */
-class custom extends AbstractApi
+class custom extends BaseApi
 {
     private $urladd = 'https://api.weixin.qq.com/customservice/kfaccount/add?access_token=%s';
     private $urlupdate = 'https://api.weixin.qq.com/customservice/kfaccount/update?access_token=%s';

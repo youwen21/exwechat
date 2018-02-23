@@ -1,13 +1,15 @@
 <?php
 namespace youwen\exwechat\api\user;
 
-use youwen\exwechat\api\AbstractApi;
+use youwen\exwechat\api\BaseApi;
 use youwen\exwechat\api\http;
+use youwen\exwechat\api\utils\common;
+
 /**
  * 获取微信用户
  * @author baiyouwen <youwen21@yeah.net>
  */
-class user extends AbstractApi
+class user extends BaseApi
 {
     private $urlUsers = 'https://api.weixin.qq.com/cgi-bin/user/get?access_token=%s';
     private $urlBlacklist = 'https://api.weixin.qq.com/cgi-bin/tags/members/getblacklist?access_token=%s';
@@ -34,7 +36,7 @@ class user extends AbstractApi
             $this->url.='&next_openid='.$next_openid;
         }
         $ret = http::curl_get($url);
-        return $this->commenPart($ret);
+        return $this->HandleRet($ret);
     }
 
     /**
@@ -47,7 +49,7 @@ class user extends AbstractApi
     {
         $url = sprintf($this->urlUserInfo, $this->token, $openid);
         $ret = http::curl_get($url);
-        return $this->commenPart($ret);
+        return $this->HandleRet($ret);
     }
 
     /**
@@ -61,7 +63,7 @@ class user extends AbstractApi
         $url = sprintf($this->urlBlacklist, $this->token);
         $data['begin_openid'] = $begin_openid;
         $ret = http::curl_post($url, $data);
-        return $this->commenPart($ret);
+        return $this->HandleRet($ret);
     }
 
     public function remark($openid, $remark)
@@ -71,7 +73,7 @@ class user extends AbstractApi
         $data['remark'] = $remark;
         $json = json_encode($data);
         $ret = http::curl_post($url, $json);
-        return $this->commenPart($ret);
+        return $this->HandleRet($ret);
     }
 
 }

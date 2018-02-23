@@ -1,7 +1,7 @@
 <?php
 namespace youwen\exwechat\api\menu;
 
-use youwen\exwechat\api\AbstractApi;
+use youwen\exwechat\api\BaseApi;
 use youwen\exwechat\api\http;
 
 /**
@@ -9,7 +9,7 @@ use youwen\exwechat\api\http;
  * @author baiyouwen <youwen21@yeah.net>
  * @license [https://mp.weixin.qq.com/wiki]
  */
-class menu extends AbstractApi
+class menu extends BaseApi
 {
     private $urlMenuGet = 'https://api.weixin.qq.com/cgi-bin/menu/get?access_token=%s';
     private $urlMenuCreate = 'https://api.weixin.qq.com/cgi-bin/menu/create?access_token=%s';

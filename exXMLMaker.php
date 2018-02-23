@@ -76,4 +76,20 @@ class exXMLMaker
         $str .= '</xml>';
         return $str;
     }
+
+
+    public static function arrToXml(array $data, $cdata=[])
+    {
+        $cdataKey = array_merge(['detail', 'scene_info'], $cdata);
+        $xml = '<xml>';
+        foreach ($data as $key => $value) {
+            if(in_array($key, $cdataKey)){
+                $xml .='<'.$key.'><![CDATA['.$value.']]></'.$key.'>';
+            }else{
+                $xml .='<'.$key.'>'.$value.'</'.$key.'>';
+            }
+        }
+        $xml .='</xml>';
+        return $xml;
+    }
 }

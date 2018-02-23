@@ -70,4 +70,3 @@ vendor/youwen/exwechat
 - [JSSDK支付接口](doc/jssdk_pay.md)
 - [微信支付](doc/pay.md)
 
-

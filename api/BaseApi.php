@@ -52,10 +52,14 @@ class BaseApi
     }
 
     /**
+     * 方法名与URL名字相同,调用方法既可找到对应的URL
      * 
      * 不需要证书,不需要特殊化处理的接口
      * 调用方法(不存在时,找到对应的URL,把data CRUL_POST过去)
      * 需要特殊处理的接口自己定义就可以了.
+     *
+     * alias是为了兼容之前写的方法名与URL地址不对应
+     * alias也可以缩短方法名,方便开发
      * 
      * @param  [string] $name      [调用的方法]
      * @param  [type] $arguments [description]
@@ -65,28 +69,33 @@ class BaseApi
     public function __call($name, $arg)
     {
         try{
-            if (!isset($this->{$name}))
+            $url = $this->{$name};
+            if(isset($this->alias) && isset($this->alias[$name])){
+                $urlName = $this->alias[$name];
+                $url = $this->{$urlName};
+            }
+            if (!isset($url))
                 throw new \Exception("没有对应的URL", 3001);
             if(count($arg) > 2)
                 throw new \Exception("本方法只接受零个或一个参数,请检查", 3002);
 
             if(count($arg) === 1){
-                $ret = http::curl_post($this->{$name}, $arg[0]);
+                $ret = http::curl_post($url, $arg[0]);
             }else if(count($arg) === 2){
-                $ret = http::sslpost($this->{$name}, $arg[0], $arg[1]);
+                $ret = http::sslpost($url, $arg[0], $arg[1]);
             }else{
-                $ret = http::curl_get($this->{$name});
+                $ret = http::curl_get($url);
             }
 
             if($this->debug){
                 if(count($arg) === 2){
-                    $this->logger->info('SSLPOST:'.$this->{$name});
+                    $this->logger->info('SSLPOST:'.$url);
                     $this->logger->info('input:', $arg);
                 }else if(count($arg) === 1){
-                    $this->logger->info('POST:'.$this->{$name});
+                    $this->logger->info('POST:'.$url);
                     $this->logger->info('input:', $arg);
                 }else{
-                    $this->logger->info('GET:'.$this->{$name});
+                    $this->logger->info('GET:'.$url);
                 }
                 $this->logger->info('outResult:', $ret);
             }

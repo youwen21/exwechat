@@ -1,7 +1,7 @@
 
 ## DEMO
 
-~~~
+~~~html
 <script type="text/javascript">
   // 步骤三：通过config接口注入权限验证配置
   wx.config({

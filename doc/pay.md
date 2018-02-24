@@ -19,7 +19,7 @@ H5支付(暂未开发,不清除,不讨论)
 [JSSDK支付](jssdk_pay.md)
 
 ### 扫码DEMO
-```
+```php
 // 模式一
 public function scanpay1()
 {
@@ -117,7 +117,7 @@ public function scanCallback()
 ```
 
 ### 刷卡支付DEMO
-```
+```php
 
 public function micropay()
 {

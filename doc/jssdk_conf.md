@@ -4,7 +4,7 @@ https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421141115
 
 # JSSDK配置 DEMO
 
-~~~
+~~~php
 
 PHP端
 /**
@@ -31,7 +31,9 @@ public function index()
     $this->assign('jsApiList', $jsApiList);
     return $this->fetch();
 }
+~~~
 
+~~~html
 HTML端
 <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
 <script type="text/javascript">

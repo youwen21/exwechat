@@ -4,7 +4,7 @@ https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421140842
 
 ## 微信网页授权 DEMO
 
-```
+```php
 
 public function snsapi_base()
 {

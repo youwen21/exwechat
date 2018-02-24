@@ -4,7 +4,7 @@ https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421140183
 
 # 获取accesstoken DEMO
 
-```
+```php
 public function accessToken()
 {
     $appid = 'wx';

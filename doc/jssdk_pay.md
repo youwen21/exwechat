@@ -4,7 +4,7 @@ https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=7_1
 
 # DEMO
 HTML端  
-~~~
+~~~html
 <!DOCTYPE html>
 <html lang="zh-cn">
   <head>
@@ -149,7 +149,7 @@ HTML端
 ~~~
 
 PHP端  
-```
+```php
 
 /**
  * 在product页面 调用此接口实现统一下单
@@ -203,7 +203,7 @@ public function expay()
 ```
 
 PHP端使用payHelper可以简化开发
-~~~
+~~~php
 public function testpay()
 {
     // 参数准备

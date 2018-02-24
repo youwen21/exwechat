@@ -62,11 +62,12 @@ vendor/youwen/exwechat
 
 # DEMO && 使用教程
 
-- [微信开发者模式API接入](doc/firstStep.md#demo)
+- [微信开发入门说明](doc/tutorial.md)
+- [微信XML消息接收处理](doc/firstStep.md)
 - [获取accessToken](doc/accessToken.md)
 - [OAuth2.0使用DEMO](doc/oauth.md)
 - [JSSDK配置](doc/jssdk_conf.md)
-- [JSSDK分享给朋友接口DEMO](doc/jssdk_demo.md)
+- [JSSDK分享到朋友圈接口DEMO](doc/jssdk_demo.md)
 - [JSSDK支付接口](doc/jssdk_pay.md)
 - [微信支付](doc/pay.md)
 

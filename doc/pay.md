@@ -12,8 +12,8 @@ https://pay.weixin.qq.com/wiki/doc/api/H5.php?chapter=15_1
 # 简单说明:
 公众号支付是在微信内打开HTML页面,使用JSSDK发起支付  
 扫码支付是开发者根据一定开发生成一个二维码展示给用户, 用户微信扫一扫支付  
-刷卡支付是用户展示付款二维码,开发者使用扫码设备扫描用户二维码实现支付
-H5支付(暂未开发,不清除,不讨论)
+刷卡支付是用户展示付款二维码,开发者使用扫码设备扫描用户二维码实现支付  
+H5支付:在手机端(非微信APP内),如华为,QQ浏览器等浏览器调起微信客户端完成支付
 
 ### 公众号支付DEMO
 [JSSDK支付](jssdk_pay.md)
@@ -145,3 +145,23 @@ public function micropay()
 }
 
 ```
+
+
+## 演示地址:
+
+#### 微信JSSKD支付(公众号支付)
+>用微信扫一扫打开
+URL: 
+
+#### 扫码支付:模式一
+>生成二维码以后用微信扫一扫
+URL:
+
+#### 扫码支付:模式二
+>生成二维码以后用微信扫一扫
+URL:
+
+#### H5支付 
+>非微信内打开
+URL:  http://dhpayment.exwechat.com/exwechat/Demoh5pay/index  
+![Alt text](h5pay.png)

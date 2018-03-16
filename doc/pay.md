@@ -151,7 +151,8 @@ public function micropay()
 
 #### 微信JSSKD支付(公众号支付)
 >用微信扫一扫打开
-URL: 
+URL: http://dhpayment.exwechat.com/exwechat/demojssdk/myproduct
+![Alt text](wxpay.png)
 
 #### 扫码支付:模式一
 >生成二维码以后用微信扫一扫

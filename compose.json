@@ -1,14 +1,18 @@
 {
   "name": "youwen/exwechat",
   "type": "library",
+  "description": "Guzzle is a Weixin Official Accounts Platform develop library",
   "authors": [
     {
-      "name": "baiyouwen",
+      "name": "owen",
       "email": "youwen21@yeah.net"
     }
   ],
   "minimum-stability": "dev",
-  "require": {},
+  "require": {
+    "guzzlehttp/guzzle": "*",
+    "Psr/SimpleCache/CacheInterface": "*"
+  },
   "autoload": {
     "psr-4": {
       "youwen\\exwechat\\": ""

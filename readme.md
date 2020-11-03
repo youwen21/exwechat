@@ -7,6 +7,11 @@
 - ApiClient， 包装GuzzleHttp/Client
 - requests, 每一个request都对应微信公众号的API
 
+# 如何记录日志
+guzzle http middleware 可以设置中间件，通过中间件记录日志  
+推荐:
+> https://github.com/gmponos/guzzle-log-middleware
+> https://github.com/namshi/cuzzle
 
 # DEMO
 ```php

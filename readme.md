@@ -7,8 +7,8 @@
  如Request\AccessToken文件对应：https://developers.weixin.qq.com/doc/offiaccount/Basic_Information/Get_access_token.html
 
 ## ApiClient,所有api请求都由此发出。
- ApiClient
-
+ ApiClient包含GuzzleHttp Client,  XmlProcessor, JsonProcessor
+ 记录的话，可以给GuzzleHttp Client注入log middleware, 复合PSR标准的LOG都可以，如monolog。
 
 
 # 重要组成

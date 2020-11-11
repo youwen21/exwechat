@@ -18,6 +18,9 @@ class Account
     // 通过ticket换取二维码
     const SHOW_QRCODE = 'https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=TICKET';
 
+    // 长链接转短链接接口
+    const SHORT_URL = 'https://api.weixin.qq.com/cgi-bin/shorturl?access_token=ACCESS_TOKEN';
+
     /**
      * 临时二维码请求说明
      * 永久二维码请求说明
@@ -42,6 +45,19 @@ class Account
     public function showQrCode($ticket, $body, $headers = [])
     {
         $url = str_replace('TICKET', $ticket, self::SHOW_QRCODE);
+        return new Request('POST', $url, $body, $headers);
+    }
+
+    /**
+     * 长链接转成短链接
+     * @param $accessToken
+     * @param $body
+     * @param array $headers
+     * @return Request
+     */
+    public function shortUrl($accessToken, $body, $headers = [])
+    {
+        $url = str_replace('ACCESS_TOKEN', $accessToken, self::SHORT_URL);
         return new Request('POST', $url, $body, $headers);
     }
 }

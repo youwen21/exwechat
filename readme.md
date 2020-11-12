@@ -50,8 +50,8 @@ guzzle http middleware 可以设置中间件，通过中间件记录日志
     + [接收事件消息（否）](https://developers.weixin.qq.com/doc/offiaccount/Message_Management/Receiving_event_pushes.html)
     + [被动回复用户消息 （否）](https://developers.weixin.qq.com/doc/offiaccount/Message_Management/Passive_user_reply_message.html)
     + [消息加密解密说明](https://developers.weixin.qq.com/doc/offiaccount/Message_Management/Message_encryption_and_decryption_instructions.html)
-    + [客服消息（待校验）](https://developers.weixin.qq.com/doc/offiaccount/Message_Management/Service_Center_messages.html)
-    + [群发接口和原创校验（待校验）](https://developers.weixin.qq.com/doc/offiaccount/Message_Management/Batch_Sends_and_Originality_Checks.html)
+    + [客服消息](https://developers.weixin.qq.com/doc/offiaccount/Message_Management/Service_Center_messages.html)
+    + [群发接口和原创校验](https://developers.weixin.qq.com/doc/offiaccount/Message_Management/Batch_Sends_and_Originality_Checks.html)
     + [模板消息接口（待校验）](https://developers.weixin.qq.com/doc/offiaccount/Message_Management/Template_Message_Interface.html)
     + [一次性订阅消息](https://developers.weixin.qq.com/doc/offiaccount/Message_Management/One-time_subscription_info.html)
  - 微信网页开发

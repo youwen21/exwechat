@@ -31,6 +31,7 @@ class CustomService
     const CUSTOM_TYPING = 'https://api.weixin.qq.com/cgi-bin/message/custom/typing?access_token=ACCESS_TOKEN';
 
     /**
+     * 添加客服帐号
      * @param $accessToken
      * @param $body
      * @param array $headers
@@ -43,6 +44,7 @@ class CustomService
     }
 
     /**
+     * 修改客服帐号
      * @param $accessToken
      * @param $body
      * @param array $headers
@@ -55,6 +57,7 @@ class CustomService
     }
 
     /**
+     * 删除客服帐号
      * @param $accessToken
      * @param $body
      * @param array $headers
@@ -67,6 +70,7 @@ class CustomService
     }
 
     /**
+     * 设置客服帐号的头像
      * @param $accessToken
      * @param $body
      * @param array $headers
@@ -81,6 +85,7 @@ class CustomService
     }
 
     /**
+     * 获取所有客服账号
      * @param $accessToken
      * @param $body
      * @param array $headers
@@ -93,6 +98,7 @@ class CustomService
     }
 
     /**
+     * 客服接口-发消息
      * @param $accessToken
      * @param $body
      * @param array $headers
@@ -105,6 +111,7 @@ class CustomService
     }
 
     /**
+     * 客服输入状态
      * @param $accessToken
      * @param $body
      * @param array $headers

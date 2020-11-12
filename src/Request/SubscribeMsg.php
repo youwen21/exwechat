@@ -42,7 +42,7 @@ class SubscribeMsg
      */
     public function templateSubscribe($accessToken, $body, $headers = [])
     {
-        $url = str_replace('ACCESS_TOKEN', $accessToken, self::KF_ACCOUNT_UPDATE);
+        $url = str_replace('ACCESS_TOKEN', $accessToken, self::TEMPLATE_SUBSCRIBE);
         return new Request('POST', $url, $headers, $body);
     }
 }

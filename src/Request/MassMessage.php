@@ -46,7 +46,7 @@ class MassMessage
     public function mediaUploadImg($accessToken, $body, $headers = [])
     {
         $url = str_replace('ACCESS_TOKEN', $accessToken, self::MEDIA_UPLOAD_IMG);
-        return new Request('POST', $url, $body, $headers);
+        return new Request('POST', $url, $headers, $body);
     }
 
     /**
@@ -59,7 +59,7 @@ class MassMessage
     public function mediaUploadNews($accessToken, $body, $headers = [])
     {
         $url = str_replace('ACCESS_TOKEN', $accessToken, self::MEDIA_UPLOAD_NEWS);
-        return new Request('POST', $url, $body, $headers);
+        return new Request('POST', $url, $headers, $body);
     }
 
     /**
@@ -72,7 +72,7 @@ class MassMessage
     public function messageMassSendAll($accessToken, $body, $headers = [])
     {
         $url = str_replace('ACCESS_TOKEN', $accessToken, self::MESSAGE_MASS_SENDALL);
-        return new Request('POST', $url, $body, $headers);
+        return new Request('POST', $url, $headers, $body);
     }
 
     /**
@@ -85,7 +85,7 @@ class MassMessage
     public function messageMassSend($accessToken, $body, $headers = [])
     {
         $url = str_replace('ACCESS_TOKEN', $accessToken, self::MESSAGE_MASS_SEND);
-        return new Request('POST', $url, $body, $headers);
+        return new Request('POST', $url, $headers, $body);
     }
 
     /**
@@ -98,7 +98,7 @@ class MassMessage
     public function messageMassDelete($accessToken, $body, $headers = [])
     {
         $url = str_replace('ACCESS_TOKEN', $accessToken, self::MESSAGE_MASS_DELETE);
-        return new Request('POST', $url, $body, $headers);
+        return new Request('POST', $url, $headers, $body);
     }
 
     /**
@@ -111,7 +111,7 @@ class MassMessage
     public function messageMassPreview($accessToken, $body, $headers = [])
     {
         $url = str_replace('ACCESS_TOKEN', $accessToken, self::MESSAGE_MASS_PREVIEW);
-        return new Request('POST', $url, $body, $headers);
+        return new Request('POST', $url, $headers, $body);
     }
 
     /**
@@ -124,7 +124,7 @@ class MassMessage
     public function messageMassGet($accessToken, $body, $headers = [])
     {
         $url = str_replace('ACCESS_TOKEN', $accessToken, self::MESSAGE_MASS_GET);
-        return new Request('POST', $url, $body, $headers);
+        return new Request('POST', $url, $headers, $body);
     }
 
     /**
@@ -137,6 +137,6 @@ class MassMessage
     public function messageMassSpeed($accessToken, $body, $headers = [])
     {
         $url = str_replace('ACCESS_TOKEN', $accessToken, self::MESSAGE_MASS_SPEED);
-        return new Request('POST', $url, $body, $headers);
+        return new Request('POST', $url, $headers, $body);
     }
 }

@@ -40,7 +40,7 @@ class Media
     public function mediaUpload($accessToken, $type, $body, $headers = [])
     {
         $url = sprintf(self::MEDIA_UPLOAD, $accessToken, $type);
-        return new Request('POST', $url, $body, $headers);
+        return new Request('POST', $url, $headers, $body);
     }
 
     /**
@@ -66,7 +66,7 @@ class Media
     public function materialAddNews($accessToken, $body, $headers = [])
     {
         $url = sprintf(self::MATERIAL_ADD_NEWS, $accessToken);
-        return new Request('POST', $url, $body, $headers);
+        return new Request('POST', $url, $headers, $body);
     }
 
     /**
@@ -79,7 +79,7 @@ class Media
     public function materialGet($accessToken, $body, $headers = [])
     {
         $url = sprintf(self::MATERIAL_GET, $accessToken);
-        return new Request('POST', $url, $body, $headers);
+        return new Request('POST', $url, $headers, $body);
     }
 
     /**
@@ -92,7 +92,7 @@ class Media
     public function materialDel($accessToken, $body, $headers = [])
     {
         $url = sprintf(self::MATERIAL_GET, $accessToken);
-        return new Request('POST', $url, $body, $headers);
+        return new Request('POST', $url, $headers, $body);
     }
 
     /**
@@ -105,7 +105,7 @@ class Media
     public function materialUpdateNews($accessToken, $body, $headers = [])
     {
         $url = sprintf(self::MATERIAL_UPDATE_NEWS, $accessToken);
-        return new Request('POST', $url, $body, $headers);
+        return new Request('POST', $url, $headers, $body);
     }
 
     /**
@@ -130,24 +130,24 @@ class Media
     public function materialBatchGet($accessToken, $body, $headers = [])
     {
         $url = sprintf(self::MATERIAL_BATCH_GET, $accessToken);
-        return new Request('POST', $url, $body, $headers);
+        return new Request('POST', $url, $headers, $body);
     }
 
 //    public function mediaUploadVideo($accessToken, $body, $headers = [])
 //    {
 //        $url = sprintf(self::MEDIA_UPLOAD_VIDEO_URL, $accessToken);
-//        return new Request('POST', $url, $body, $headers);
+//        return new Request('POST', $url, $headers, $body);
 //    }
 //
 //    public function mediaUploadNews($accessToken, $body, $headers = [])
 //    {
 //        $url = sprintf(self::MEDIA_UPLOAD_NEWS_URL, $accessToken);
-//        return new Request('POST', $url, $body, $headers);
+//        return new Request('POST', $url, $headers, $body);
 //    }
 //
 //    public function mediaUploadImg($accessToken, $body, $headers = [])
 //    {
 //        $url = sprintf(self::MEDIA_UPLOAD_IMG_URL, $accessToken);
-//        return new Request('POST', $url, $body, $headers);
+//        return new Request('POST', $url, $headers, $body);
 //    }
 }

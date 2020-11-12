@@ -60,6 +60,6 @@ class Message
     public function messageSendAll($accessToken, $body, $headers = [])
     {
         $url = sprintf(self::MESSAGE_SEND_ALL_URL, $accessToken);
-        return new Request('POST', $url, $body, $headers);
+        return new Request('POST', $url, $headers, $body);
     }
 }

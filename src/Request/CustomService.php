@@ -40,7 +40,7 @@ class CustomService
     public function kfAccountAdd($accessToken, $body, $headers = [])
     {
         $url = str_replace('ACCESS_TOKEN', $accessToken, self::KF_ACCOUNT_ADD);
-        return new Request('POST', $url, $body, $headers);
+        return new Request('POST', $url, $headers, $body);
     }
 
     /**
@@ -53,7 +53,7 @@ class CustomService
     public function kfAccountUpdate($accessToken, $body, $headers = [])
     {
         $url = str_replace('ACCESS_TOKEN', $accessToken, self::KF_ACCOUNT_UPDATE);
-        return new Request('POST', $url, $body, $headers);
+        return new Request('POST', $url, $headers, $body);
     }
 
     /**
@@ -66,7 +66,7 @@ class CustomService
     public function kfAccountDel($accessToken, $body, $headers = [])
     {
         $url = str_replace('ACCESS_TOKEN', $accessToken, self::KF_ACCOUNT_DEL);
-        return new Request('POST', $url, $body, $headers);
+        return new Request('POST', $url, $headers, $body);
     }
 
     /**
@@ -81,7 +81,7 @@ class CustomService
         $search = ['ACCESS_TOKEN', 'KFACCOUNT'];
         $replace = [$accessToken, $accountId];
         $url = str_replace($search, $replace, self::KF_ACCOUNT_UPDATE_HEAD_IMG);
-        return new Request('POST', $url, $body, $headers);
+        return new Request('POST', $url, $headers, $body);
     }
 
     /**
@@ -107,7 +107,7 @@ class CustomService
     public function customSend($accessToken, $body, $headers = [])
     {
         $url = str_replace('ACCESS_TOKEN', $accessToken, self::CUSTOM_SEND);
-        return new Request('POST', $url, $body, $headers);
+        return new Request('POST', $url, $headers, $body);
     }
 
     /**
@@ -120,6 +120,6 @@ class CustomService
     public function customTyping($accessToken, $body, $headers = [])
     {
         $url = str_replace('ACCESS_TOKEN', $accessToken, self::CUSTOM_TYPING);
-        return new Request('POST', $url, $body, $headers);
+        return new Request('POST', $url, $headers, $body);
     }
 }

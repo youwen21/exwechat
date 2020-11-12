@@ -70,7 +70,7 @@ class UserSummary
     public function getUserSummary($accessToken, $body, $headers = [])
     {
         $url = str_replace('ACCESS_TOKEN', $accessToken, self::GET_USER_SUMMARY);
-        return new Request('POST', $url, $body, $headers);
+        return new Request('POST', $url, $headers, $body);
     }
 
     /**
@@ -83,7 +83,7 @@ class UserSummary
     public function getUserCumulate($accessToken, $body, $headers = [])
     {
         $url = str_replace('ACCESS_TOKEN', $accessToken, self::GET_USER_CUMULATE);
-        return new Request('POST', $url, $body, $headers);
+        return new Request('POST', $url, $headers, $body);
     }
 
     /**
@@ -98,6 +98,6 @@ class UserSummary
     public function dataCube($dataQubeUrl, $accessToken, $body, $headers = [])
     {
         $url = str_replace('ACCESS_TOKEN', $accessToken, $dataQubeUrl);
-        return new Request('POST', $url, $body, $headers);
+        return new Request('POST', $url, $headers, $body);
     }
 }

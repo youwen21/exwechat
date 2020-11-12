@@ -32,7 +32,7 @@ class Account
     public function qrCodeCreate($accessToken, $body, $headers = [])
     {
         $url = str_replace('ACCESS_TOKEN', $accessToken, self::QRCODE_CREATE);
-        return new Request('POST', $url, $body, $headers);
+        return new Request('POST', $url, $headers, $body);
     }
 
     /**
@@ -45,7 +45,7 @@ class Account
     public function showQrCode($ticket, $body, $headers = [])
     {
         $url = str_replace('TICKET', $ticket, self::SHOW_QRCODE);
-        return new Request('POST', $url, $body, $headers);
+        return new Request('POST', $url, $headers, $body);
     }
 
     /**
@@ -58,6 +58,6 @@ class Account
     public function shortUrl($accessToken, $body, $headers = [])
     {
         $url = str_replace('ACCESS_TOKEN', $accessToken, self::SHORT_URL);
-        return new Request('POST', $url, $body, $headers);
+        return new Request('POST', $url, $headers, $body);
     }
 }

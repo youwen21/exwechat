@@ -48,7 +48,7 @@ class Material
     public function addNews($accessToken, $body, $headers = [])
     {
         $url = str_replace('ACCESS_TOKEN', $accessToken, self::MATERIAL_ADD_NEWS);
-        return new Request('POST', $url, $body, $headers);
+        return new Request('POST', $url, $headers, $body);
     }
 
     /**
@@ -61,7 +61,7 @@ class Material
     public function getMaterial($accessToken, $body, $headers = [])
     {
         $url = str_replace('ACCESS_TOKEN', $accessToken, self::MATERIAL_GET);
-        return new Request('POST', $url, $body, $headers);
+        return new Request('POST', $url, $headers, $body);
     }
 
     /**
@@ -74,7 +74,7 @@ class Material
     public function updateNews($accessToken, $body, $headers = [])
     {
         $url = str_replace('ACCESS_TOKEN', $accessToken, self::MATERIAL_UPDATE_NEWS);
-        return new Request('POST', $url, $body, $headers);
+        return new Request('POST', $url, $headers, $body);
     }
 
     /**
@@ -87,7 +87,7 @@ class Material
     public function batchGetMaterial($accessToken, $body, $headers = [])
     {
         $url = str_replace('ACCESS_TOKEN', $accessToken, self::MATERIAL_BATCH_GET);
-        return new Request('POST', $url, $body, $headers);
+        return new Request('POST', $url, $headers, $body);
     }
 
 
@@ -101,7 +101,7 @@ class Material
     public function commentOpen($accessToken, $body, $headers = [])
     {
         $url = str_replace('ACCESS_TOKEN', $accessToken, self::COMMENT_OPEN);
-        return new Request('POST', $url, $body, $headers);
+        return new Request('POST', $url, $headers, $body);
     }
 
     /**
@@ -114,7 +114,7 @@ class Material
     public function commentClose($accessToken, $body, $headers = [])
     {
         $url = str_replace('ACCESS_TOKEN', $accessToken, self::COMMENT_CLOSE);
-        return new Request('POST', $url, $body, $headers);
+        return new Request('POST', $url, $headers, $body);
     }
 
     /**
@@ -127,7 +127,7 @@ class Material
     public function commentList($accessToken, $body, $headers = [])
     {
         $url = str_replace('ACCESS_TOKEN', $accessToken, self::COMMENT_LIST);
-        return new Request('POST', $url, $body, $headers);
+        return new Request('POST', $url, $headers, $body);
     }
 
     /**
@@ -140,7 +140,7 @@ class Material
     public function commentMarkElect($accessToken, $body, $headers = [])
     {
         $url = str_replace('ACCESS_TOKEN', $accessToken, self::COMMENT_MARKELECT);
-        return new Request('POST', $url, $body, $headers);
+        return new Request('POST', $url, $headers, $body);
     }
 
     /**
@@ -153,7 +153,7 @@ class Material
     public function commentUnMarkElect($accessToken, $body, $headers = [])
     {
         $url = str_replace('ACCESS_TOKEN', $accessToken, self::COMMENT_UNMARKELECT);
-        return new Request('POST', $url, $body, $headers);
+        return new Request('POST', $url, $headers, $body);
     }
 
     /**
@@ -166,7 +166,7 @@ class Material
     public function commentDelete($accessToken, $body, $headers = [])
     {
         $url = str_replace('ACCESS_TOKEN', $accessToken, self::COMMENT_DELETE);
-        return new Request('POST', $url, $body, $headers);
+        return new Request('POST', $url, $headers, $body);
     }
 
     /**
@@ -179,7 +179,7 @@ class Material
     public function commentReply($accessToken, $body, $headers = [])
     {
         $url = str_replace('ACCESS_TOKEN', $accessToken, self::COMMENT_DELETE);
-        return new Request('POST', $url, $body, $headers);
+        return new Request('POST', $url, $headers, $body);
     }
 
     /**
@@ -192,6 +192,6 @@ class Material
     public function commentReplyDelete($accessToken, $body, $headers = [])
     {
         $url = str_replace('ACCESS_TOKEN', $accessToken, self::COMMENT_DELETE);
-        return new Request('POST', $url, $body, $headers);
+        return new Request('POST', $url, $headers, $body);
     }
 }

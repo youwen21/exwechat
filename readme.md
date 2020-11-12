@@ -150,7 +150,7 @@ $ipRequest = (new Ips)->getIps($token);
 $response = $api->send($ipRequest);
 ```
 
-# DEMO2
+# DEMO2 使用facade
 ```php
 // facade
 $redis = RedisFactory::create();

@@ -4,12 +4,8 @@ namespace youwen\exwechat;
 
 /**
  * 这个类是腾讯的DEMO pkcs7Encoder文件
- * 通过这个类可以看出是PHP老油条写的DEMO 构造方法和类同名，
- * 特意查了一下，PHP5之前用的写法。
- * 为什么是一个老油条写这么DEMO?  因为难。
- * 难在 填充补位，网络字节序 等 就这两个名词 我还得研究
- * mcrypt  chr  pack  decode  真是一般PHP编者的弱点。
- * 没学C和汇编底层语言的 可能PHPER瓶颈就在这
+ * 难在 填充补位，网络字节序 .
+ * mcrypt  chr  pack  decode 。
  */
 
 /**
@@ -149,7 +145,6 @@ class Prpcrypt
      */
     public function getRandomStr()
     {
-
         $str = "";
         $str_pol = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz";
         $max = strlen($str_pol) - 1;
@@ -158,6 +153,4 @@ class Prpcrypt
         }
         return $str;
     }
-
 }
-

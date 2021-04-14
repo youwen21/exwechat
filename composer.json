@@ -18,7 +18,7 @@
   "minimum-stability": "dev",
   "require": {
     "guzzlehttp/guzzle": "*",
-    "Psr/SimpleCache/CacheInterface": "*"
+    "psr/simple-cache": "*"
   },
   "autoload": {
     "psr-4": {

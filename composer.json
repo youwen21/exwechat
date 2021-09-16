@@ -5,8 +5,7 @@
         "weixin",
         "wechat",
         "微信公众号开发",
-        "微信OAuth网页授权",
-        "PSR规范，依赖PSR-cache, PSR-request"
+        "微信OAuth网页授权"
     ],
   "description": "exwechat is a Weixin Official Accounts Platform develop library, 这是一个微信公众号开发包。",
   "authors": [
@@ -24,5 +23,6 @@
     "psr-4": {
       "youwen\\exwechat\\": ""
     }
-  }
+  },
+  "license": "MIT"
 }
